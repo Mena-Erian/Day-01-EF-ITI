@@ -3,6 +3,7 @@ using Demo2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo2.Migrations
 {
     [DbContext(typeof(ITIContext))]
-    partial class ITIContextModelSnapshot : ModelSnapshot
+    [Migration("20250906180518_initalCreate")]
+    partial class initalCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +36,7 @@ namespace Demo2.Migrations
 
                     b.HasIndex("DepartmentsId");
 
-                    b.ToTable("CourseDepartment", (string)null);
+                    b.ToTable("CourseDepartment");
                 });
 
             modelBuilder.Entity("Demo2.Modals.Course", b =>
@@ -51,7 +54,7 @@ namespace Demo2.Migrations
 
                     b.HasKey("CrsId");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("Demo2.Modals.Department", b =>
@@ -72,7 +75,7 @@ namespace Demo2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Demo2.Modals.Student", b =>
@@ -101,7 +104,7 @@ namespace Demo2.Migrations
 
                     b.HasIndex("SuperViser");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("Demo2.Modals.StudentCourse", b =>
@@ -119,7 +122,7 @@ namespace Demo2.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("StudentCourses", (string)null);
+                    b.ToTable("StudentCourses");
                 });
 
             modelBuilder.Entity("CourseDepartment", b =>

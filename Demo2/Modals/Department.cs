@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Demo2.Modals
 {
-    internal class Department
+    internal class Department // Many
     {
 
         //public int DepartmentId { get; set; }
@@ -19,6 +19,8 @@ namespace Demo2.Modals
         [StringLength(20)]
         public string DeptName { get; set; }
         public int? Capacity { get; set; }
+        public List<Student> Students { get; set; } = new List<Student>();//Should Initil, to be able to Add() to this list
+        public virtual List<Course> Courses { get; set; } = new List<Course>();
 
         public override string ToString()
             => $"Department Id: {Id}, Name: {DeptName}, Capacity: {(Capacity.HasValue ? Capacity.Value.ToString() : "N/A")}";

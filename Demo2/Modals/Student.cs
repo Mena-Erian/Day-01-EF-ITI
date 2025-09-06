@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Demo2.Modals
 {
     //[Table("")]
-    internal class Student
+    internal class Student //1
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -19,6 +19,19 @@ namespace Demo2.Modals
         [Required]
         public string Name { get; set; }
         public int? Age { get; set; }
+        [ForeignKey(nameof(Std))]
+        public int? SuperViser { get; set; }
+        public virtual Student Std { get; set; }
+        public string Email { get; set; }
+
+        // to Act the foreignKey in Code
+        [ForeignKey("Department")]
+        public int DeptNum { get; set; } // if you don't make it nullable it will to be in deleted casced,
+        //  
+        //  [ForeignKey("DeptNum")]
+        public virtual Department Department { get; set; } // one to manyn relation
+        public virtual List<StudentCourse> StudentCourses { get; set; }
+
         public override string ToString() => $"{StdId}, {Name}, {Age}";
     }
 }

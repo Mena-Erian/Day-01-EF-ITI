@@ -1,5 +1,7 @@
 ﻿using Demo2.Data;
+using Demo2.Modals;
 using HelperUtilities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Demo2
 {
@@ -15,14 +17,22 @@ namespace Demo2
     {
         static void Main(string[] args)
         {
-            using (ITIContext contect = new ITIContext())
+            using (ITIContext context = new ITIContext())
             {
-                var Departments = contect.Departments;
+                var Departments = context.Departments;
                 Departments.PrintAll();
-                var Students = contect.Students;
+                var Students = context.Students;
+
+                var dept = Departments.FirstOrDefault(a => a.Id == 2);
+
+                //Students.Add(new Student() { StdId = 5, Name = "halk Mohammad", Department = dept });
+                //dept.Students.Add(new Student() { StdId = 5, Name = "halk Mohammad", Department = dept });
+
+
+                context.SaveChanges();
                 Students.PrintAll();
             }
-            
+
 
             Console.ReadLine();
         }
