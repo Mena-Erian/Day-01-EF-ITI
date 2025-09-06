@@ -1,10 +1,16 @@
-﻿namespace Demo
+﻿using Data.Models;
+using HelperUtilities;
+using Microsoft.EntityFrameworkCore;
+
+namespace Demo
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            AdventureWorks2012_aContext context = new AdventureWorks2012_aContext();    
+
+            context.Departments.PrintAll();
         }
     }
 }
